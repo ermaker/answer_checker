@@ -41,3 +41,4 @@ gem 'execjs'
 gem 'therubyracer'
 
 gem 'paperclip'
+gem 'formtastic'
