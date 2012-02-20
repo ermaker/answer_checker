@@ -1,0 +1,11 @@
+<%= semantic_form_for @piece do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :problem_id %>
+    <%= f.input :file %>
+    <%= f.input :comment %>
+  <% end %>
+
+  <%= f.buttons do %>
+    <%= f.commit_button %>
+  <% end %>
+<% end %>
