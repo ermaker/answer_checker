@@ -1,7 +1,7 @@
 class CreatePieces < ActiveRecord::Migration
   def change
     create_table :pieces do |t|
-      t.references :problem_id
+      t.references :problem
       t.has_attached_file :file
       t.string :comment
 

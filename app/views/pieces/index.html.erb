@@ -12,7 +12,7 @@
 
 <% @pieces.each do |piece| %>
   <tr>
-    <td><%= piece.problem_id %></td>
+    <td><%= piece.problem.name %></td>
     <td><%= piece.file %></td>
     <td><%= piece.comment %></td>
     <td><%= link_to 'Show', piece %></td>

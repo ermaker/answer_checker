@@ -1,7 +1,7 @@
 <%= semantic_form_for @piece do |f| %>
   <%= f.inputs do %>
-    <%= f.input :problem_id %>
-    <%= f.input :file %>
+    <%= f.input :problem %>
+    <%= f.input :file, :as => :file %>
     <%= f.input :comment %>
   <% end %>
 
