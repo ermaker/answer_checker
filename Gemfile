@@ -42,3 +42,6 @@ gem 'therubyracer'
 
 gem 'paperclip'
 gem 'formtastic'
+
+gem 'delayed_job_active_record'
+gem 'daemons'

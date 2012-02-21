@@ -13,9 +13,14 @@ class Piece < ActiveRecord::Base
   protected
 
   def generate_result
-    result.assign(source.uploaded_file)
-    save
+    generate_result_with_delay
   end
+
+  def generate_result_with_delay
+    self.result = File.open(source.path)
+    save!
+  end
+  handle_asynchronously :generate_result_with_delay
 
   private
   def url_of_result
