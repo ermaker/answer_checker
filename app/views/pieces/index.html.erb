@@ -13,7 +13,7 @@
 <% @pieces.each do |piece| %>
   <tr>
     <td><%= piece.problem.name %></td>
-    <td><%= piece.file %></td>
+    <td><%= piece.source %></td>
     <td><%= piece.comment %></td>
     <td><%= link_to 'Show', piece %></td>
     <td><%= link_to 'Edit', edit_piece_path(piece) %></td>

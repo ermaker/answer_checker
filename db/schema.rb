@@ -11,18 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120221032912) do
+ActiveRecord::Schema.define(:version => 20120221134436) do
 
   create_table "pieces", :force => true do |t|
     t.integer  "problem_id"
-    t.string   "file_file_name"
+    t.string   "source_file_name"
     t.string   "comment"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.string   "file_fingerprint"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "source_fingerprint"
+    t.string   "result_file_name"
   end
 
-  add_index "pieces", ["file_fingerprint"], :name => "index_pieces_on_file_fingerprint", :unique => true
+  add_index "pieces", ["source_file_name"], :name => "index_pieces_on_source_file_name", :unique => true
 
   create_table "problems", :force => true do |t|
     t.string   "name"
