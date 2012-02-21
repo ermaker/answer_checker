@@ -1,6 +1,8 @@
 AnswerChecker::Application.routes.draw do
   resources :problems do
-    resources :pieces
+    resources :pieces do
+      get :diff
+    end
   end
 
   # The priority is based upon order of creation:

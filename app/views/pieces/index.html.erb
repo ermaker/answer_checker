@@ -8,6 +8,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @pieces.each do |piece| %>
@@ -15,6 +16,7 @@
     <td><%= piece.source %></td>
     <td><%= piece.result %></td>
     <td><%= piece.comment %></td>
+    <td><%= link_to 'Diff', problem_piece_diff_path(@problem, piece) %></td>
     <td><%= link_to 'Show', [@problem, piece] %></td>
     <td><%= link_to 'Edit', edit_problem_piece_path(@problem, piece) %></td>
     <td><%= link_to 'Destroy', [@problem, piece], confirm: 'Are you sure?', method: :delete %></td>

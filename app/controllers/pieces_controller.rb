@@ -1,4 +1,22 @@
 class PiecesController < ApplicationController
+  def diff
+    @problem = Problem.find(params[:problem_id])
+    @piece = @problem.pieces.find(params[:piece_id])
+    @pieces = @problem.pieces.where('id != :piece_id', piece_id: params[:piece_id])
+    my_result = File.read(@piece.result.path)
+    @diffs = @pieces.map do |piece|
+      {
+        target: piece.result.url,
+        result: my_result == File.read(piece.result.path)
+      }
+    end
+
+    respond_to do |format|
+      format.html # diff.html.erb
+      format.json { render json: @diffs }
+    end
+  end
+
   def index
     @problem = Problem.find(params[:problem_id])
     @pieces = @problem.pieces.all
