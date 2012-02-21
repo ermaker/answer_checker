@@ -15,6 +15,11 @@
   <%= @piece.comment %>
 </p>
 
+<p>
+  <b>Fingerprint:</b>
+  <%= @piece.file_fingerprint %>
+</p>
+
 
 <%= link_to 'Edit', edit_piece_path(@piece) %> |
 <%= link_to 'Back', pieces_path %>

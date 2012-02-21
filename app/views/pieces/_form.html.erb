@@ -2,6 +2,7 @@
   <%= f.inputs do %>
     <%= f.input :problem %>
     <%= f.input :file, :as => :file %>
+    <%= f.semantic_errors :file_fingerprint %>
     <%= f.input :comment %>
   <% end %>
 
