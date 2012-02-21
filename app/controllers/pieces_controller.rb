@@ -1,8 +1,7 @@
 class PiecesController < ApplicationController
-  # GET /pieces
-  # GET /pieces.json
   def index
-    @pieces = Piece.all
+    @problem = Problem.find(params[:problem_id])
+    @pieces = @problem.pieces.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,10 +9,9 @@ class PiecesController < ApplicationController
     end
   end
 
-  # GET /pieces/1
-  # GET /pieces/1.json
   def show
-    @piece = Piece.find(params[:id])
+    @problem = Problem.find(params[:problem_id])
+    @piece = @problem.pieces.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -21,10 +19,9 @@ class PiecesController < ApplicationController
     end
   end
 
-  # GET /pieces/new
-  # GET /pieces/new.json
   def new
-    @piece = Piece.new
+    @problem = Problem.find(params[:problem_id])
+    @piece = @problem.pieces.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,17 +31,17 @@ class PiecesController < ApplicationController
 
   # GET /pieces/1/edit
   def edit
-    @piece = Piece.find(params[:id])
+    @problem = Problem.find(params[:problem_id])
+    @piece = @problem.pieces.find(params[:id])
   end
 
-  # POST /pieces
-  # POST /pieces.json
   def create
-    @piece = Piece.new(params[:piece])
+    @problem = Problem.find(params[:problem_id])
+    @piece = @problem.pieces.build(params[:piece])
 
     respond_to do |format|
       if @piece.save
-        format.html { redirect_to @piece, notice: 'Piece was successfully created.' }
+        format.html { redirect_to [@problem, @piece], notice: 'Piece was successfully created.' }
         format.json { render json: @piece, status: :created, location: @piece }
       else
         format.html { render action: "new" }
@@ -56,11 +53,12 @@ class PiecesController < ApplicationController
   # PUT /pieces/1
   # PUT /pieces/1.json
   def update
-    @piece = Piece.find(params[:id])
+    @problem = Problem.find(params[:problem_id])
+    @piece = @problem.pieces.find(params[:id])
 
     respond_to do |format|
       if @piece.update_attributes(params[:piece])
-        format.html { redirect_to @piece, notice: 'Piece was successfully updated.' }
+        format.html { redirect_to [@problem, @piece], notice: 'Piece was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -72,11 +70,12 @@ class PiecesController < ApplicationController
   # DELETE /pieces/1
   # DELETE /pieces/1.json
   def destroy
-    @piece = Piece.find(params[:id])
+    @problem = Problem.find(params[:problem_id])
+    @piece = @problem.pieces.find(params[:id])
     @piece.destroy
 
     respond_to do |format|
-      format.html { redirect_to pieces_url }
+      format.html { redirect_to problem_pieces_url(@problem) }
       format.json { head :no_content }
     end
   end

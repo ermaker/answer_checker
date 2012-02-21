@@ -1,7 +1,7 @@
 AnswerChecker::Application.routes.draw do
-  resources :pieces
-
-  resources :problems
+  resources :problems do
+    resources :pieces
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

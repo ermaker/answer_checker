@@ -11,7 +11,7 @@
 <% @problems.each do |problem| %>
   <tr>
     <td><%= problem.name %></td>
-    <td><%= link_to 'Show', problem %></td>
+    <td><%= link_to 'Show', problem_pieces_path(problem) %></td>
     <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
     <td><%= link_to 'Destroy', problem, confirm: 'Are you sure?', method: :delete %></td>
   </tr>

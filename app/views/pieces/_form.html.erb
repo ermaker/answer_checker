@@ -1,6 +1,5 @@
-<%= semantic_form_for @piece do |f| %>
+<%= semantic_form_for [@problem, @piece] do |f| %>
   <%= f.inputs do %>
-    <%= f.input :problem %>
     <%= f.input :source, :as => :file %>
     <%= f.semantic_errors :file_fingerprint %>
     <%= f.input :comment %>

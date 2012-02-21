@@ -2,7 +2,7 @@
 
 <p>
   <b>Problem:</b>
-  <%= @piece.problem_id %>
+  <%= @piece.problem.name %>
 </p>
 
 <p>
@@ -26,5 +26,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_piece_path(@piece) %> |
-<%= link_to 'Back', pieces_path %>
+<%= link_to 'Edit', edit_problem_piece_path(@problem, @piece) %> |
+<%= link_to 'Back', problem_pieces_path(@problem) %>
