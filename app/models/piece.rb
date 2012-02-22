@@ -1,7 +1,7 @@
 class Piece < ActiveRecord::Base
   belongs_to :problem
   has_attached_file :source,
-    :url => '/system/:fingerprint.R'
+    :url => '/system/R/:fingerprint.R'
   has_attached_file :result,
     :url => :url_of_result
   validates :problem, :presence => true
@@ -24,6 +24,6 @@ class Piece < ActiveRecord::Base
 
   private
   def url_of_result
-    "/system/#{source_fingerprint}.result"
+    "/system/result/#{source_fingerprint}.result"
   end
 end
