@@ -11,4 +11,5 @@
  *= require_self
  *= require formtastic
  *= rqeuire my_formtastic_changes
+ *= require blueprint
 */
