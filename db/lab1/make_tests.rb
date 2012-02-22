@@ -28,4 +28,4 @@ def make_tests number_of_attribute, number_of_domain
 end
 
 make_tests 2, 2
-#make_tests 2, 3
+make_tests 2, 3

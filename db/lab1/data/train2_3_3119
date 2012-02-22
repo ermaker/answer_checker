@@ -1,0 +1,5 @@
+A A B true
+A B A false
+B A B false
+B B A false
+B B B true
