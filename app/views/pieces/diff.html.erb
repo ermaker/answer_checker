@@ -8,6 +8,7 @@
       <th>대상</th>
       <th>결과</th>
       <th>남기는 말</th>
+      <th>실행 소요 시간</th>
     </tr>
 
     <% @diffs.each do |diff| %>
@@ -15,6 +16,13 @@
         <td><%= link_to File.basename(diff[:target].result.url), diff[:target].result.url %></td>
         <td><%= diff[:result] %></td>
         <td><%= diff[:target].comment %></td>
+        <td>
+          <% if diff[:target].result.file? %>
+            <%= distance_of_time_in_words(diff[:target].source.updated_at, diff[:target].result.updated_at, true) %>
+          <% else %>
+            실행 중
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </table>

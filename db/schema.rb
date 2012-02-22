@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120221141231) do
+ActiveRecord::Schema.define(:version => 20120222093543) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(:version => 20120221141231) do
     t.datetime "updated_at",         :null => false
     t.string   "source_fingerprint"
     t.string   "result_file_name"
+    t.datetime "source_updated_at"
+    t.datetime "result_updated_at"
   end
 
   add_index "pieces", ["source_file_name"], :name => "index_pieces_on_source_file_name", :unique => true
