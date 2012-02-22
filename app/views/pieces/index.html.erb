@@ -1,31 +1,31 @@
-<h1>Listing pieces</h1>
+<h1>실행 결과 리스트</h1>
 
-<%= link_to 'New Piece', new_problem_piece_path(@problem) %>
+<%= link_to '코드 실행', new_problem_piece_path(@problem) %>
 
 <br />
 
 <table>
   <tr>
-    <th>Result</th>
-    <th>Download</th>
-    <th>Comment</th>
+    <th>비교 결과</th>
+    <th>다운로드</th>
+    <th>남기는 말</th>
     <th></th>
   </tr>
 
 <% @pieces.each do |piece| %>
   <tr>
     <td>
-      <%= link_to (piece.result.file? ? File.basename(piece.result.url) : 'This code is running now...'), problem_piece_diff_path(@problem, piece) %>
+      <%= link_to (piece.result.file? ? File.basename(piece.result.url) : '현재 코드가 실행 중 입니다.'), problem_piece_diff_path(@problem, piece) %>
     </td>
     <td>
       <% if piece.result.file? %>
-        <%= link_to 'Downalod', piece.result.url %>
+        <%= link_to '다운로드', piece.result.url %>
       <% else %>
-        In progress
+        실행 중
       <% end %>
       </td>
     <td><%= piece.comment %></td>
-    <td><%= link_to 'Destroy', [@problem, piece], confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to '삭제', [@problem, piece], confirm: '정말 삭제 하시겠습니까?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

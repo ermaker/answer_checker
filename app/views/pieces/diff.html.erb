@@ -1,12 +1,12 @@
-<h1>Listing diff</h1>
+<h1>결과 비교</h1>
 
 <% if @diffs.nil? %>
-  This code is running now. Refresh this page to check the result.
+  현재 코드가 실행 중 입니다. 결과를 확인하기 위해 이 페이지를 새로고침 해 주세요.
 <% else %>
   <table>
     <tr>
-      <th>target</th>
-      <th>result</th>
+      <th>대상</th>
+      <th>결과</th>
     </tr>
 
     <% @diffs.each do |diff| %>
@@ -20,4 +20,4 @@
 
 <br />
 
-<%= link_to 'Back', problem_pieces_path(@problem) %>
+<%= link_to '돌아가기', problem_pieces_path(@problem) %>

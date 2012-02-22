@@ -1,11 +1,10 @@
 <%= semantic_form_for [@problem, @piece] do |f| %>
   <%= f.inputs do %>
-    <%= f.input :source, :as => :file %>
-    <%= f.semantic_errors :file_fingerprint %>
-    <%= f.input :comment %>
+    <%= f.input :source, :label => '소스 코드', :as => :file %>
+    <%= f.input :comment, :label => '남기는 말' %>
   <% end %>
 
   <%= f.buttons do %>
-    <%= f.commit_button %>
+    <%= f.commit_button :label => '실행' %>
   <% end %>
 <% end %>
