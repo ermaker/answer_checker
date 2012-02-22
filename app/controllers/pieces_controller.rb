@@ -2,13 +2,15 @@ class PiecesController < ApplicationController
   def diff
     @problem = Problem.find(params[:problem_id])
     @piece = @problem.pieces.find(params[:piece_id])
-    @pieces = @problem.pieces.where('id != :piece_id', piece_id: params[:piece_id])
-    my_result = File.read(@piece.result.path)
-    @diffs = @pieces.map do |piece|
-      {
-        target: piece.result.url,
-        result: my_result == File.read(piece.result.path)
-      }
+    if @piece.result.file?
+      my_result = File.read(@piece.result.path)
+      pieces = @problem.pieces.where('id != :piece_id', piece_id: params[:piece_id])
+      @diffs = pieces.map do |piece|
+        {
+          target: piece.result.url,
+          result: my_result == File.read(piece.result.path)
+        }
+      end
     end
 
     respond_to do |format|
@@ -59,8 +61,8 @@ class PiecesController < ApplicationController
 
     respond_to do |format|
       if @piece.save
-        format.html { redirect_to [@problem, @piece], notice: 'Piece was successfully created.' }
-        format.json { render json: @piece, status: :created, location: @piece }
+        format.html { redirect_to problem_piece_diff_path(@problem, @piece), notice: 'Piece was successfully created.' }
+        format.json { render json: nil, status: :created, location: @piece }
       else
         format.html { render action: "new" }
         format.json { render json: @piece.errors, status: :unprocessable_entity }

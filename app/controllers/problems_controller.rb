@@ -44,7 +44,7 @@ class ProblemsController < ApplicationController
 
     respond_to do |format|
       if @problem.save
-        format.html { redirect_to @problem, notice: 'Problem was successfully created.' }
+        format.html { redirect_to problems_url, notice: 'Problem was successfully created.' }
         format.json { render json: @problem, status: :created, location: @problem }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class ProblemsController < ApplicationController
 
     respond_to do |format|
       if @problem.update_attributes(params[:problem])
-        format.html { redirect_to @problem, notice: 'Problem was successfully updated.' }
+        format.html { redirect_to problems_url, notice: 'Problem was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

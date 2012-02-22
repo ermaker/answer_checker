@@ -1,29 +1,31 @@
 <h1>Listing pieces</h1>
 
+<%= link_to 'New Piece', new_problem_piece_path(@problem) %>
+
+<br />
+
 <table>
   <tr>
-    <th>source</th>
-    <th>result</th>
+    <th>Result</th>
+    <th>Download</th>
     <th>Comment</th>
-    <th></th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
 <% @pieces.each do |piece| %>
   <tr>
-    <td><%= piece.source %></td>
-    <td><%= piece.result %></td>
+    <td>
+      <%= link_to (piece.result.file? ? File.basename(piece.result.url) : 'This code is running now...'), problem_piece_diff_path(@problem, piece) %>
+    </td>
+    <td>
+      <% if piece.result.file? %>
+        <%= link_to 'Downalod', piece.result.url %>
+      <% else %>
+        In progress
+      <% end %>
+      </td>
     <td><%= piece.comment %></td>
-    <td><%= link_to 'Diff', problem_piece_diff_path(@problem, piece) %></td>
-    <td><%= link_to 'Show', [@problem, piece] %></td>
-    <td><%= link_to 'Edit', edit_problem_piece_path(@problem, piece) %></td>
     <td><%= link_to 'Destroy', [@problem, piece], confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Piece', new_problem_piece_path(@problem) %>

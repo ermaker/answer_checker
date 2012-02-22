@@ -1,19 +1,23 @@
 <h1>Listing diff</h1>
 
-<table>
-  <tr>
-    <th>target</th>
-    <th>result</th>
-  </tr>
+<% if @diffs.nil? %>
+  This code is running now. Refresh this page to check the result.
+<% else %>
+  <table>
+    <tr>
+      <th>target</th>
+      <th>result</th>
+    </tr>
 
-<% @diffs.each do |diff| %>
-  <tr>
-    <td><%= diff[:target] %></td>
-    <td><%= diff[:result] %></td>
-  </tr>
+    <% @diffs.each do |diff| %>
+      <tr>
+        <td><%= link_to File.basename(diff[:target]), diff[:target] %></td>
+        <td><%= diff[:result] %></td>
+      </tr>
+    <% end %>
+  </table>
 <% end %>
-</table>
 
 <br />
 
-<%= link_to 'Back', [@problem, @piece] %>
+<%= link_to 'Back', problem_pieces_path(@problem) %>
