@@ -7,12 +7,14 @@
     <tr>
       <th>대상</th>
       <th>결과</th>
+      <th>남기는 말</th>
     </tr>
 
     <% @diffs.each do |diff| %>
       <tr>
-        <td><%= link_to File.basename(diff[:target]), diff[:target] %></td>
+        <td><%= link_to File.basename(diff[:target].result.url), diff[:target].result.url %></td>
         <td><%= diff[:result] %></td>
+        <td><%= diff[:target].comment %></td>
       </tr>
     <% end %>
   </table>

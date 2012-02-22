@@ -7,7 +7,7 @@ class PiecesController < ApplicationController
       pieces = @problem.pieces.where('id != :piece_id', piece_id: params[:piece_id])
       @diffs = pieces.map do |piece|
         {
-          target: piece.result.url,
+          target: piece,
           result: my_result == File.read(piece.result.path)
         }
       end
