@@ -17,7 +17,16 @@ class Piece < ActiveRecord::Base
   end
 
   def generate_result_with_delay
-    self.result = File.open(source.path)
+    output = Dir.mktmpdir do |tmpdir|
+      Open3.popen3("cd #{Rails.root}/db/lab1; R --slave --vanilla") do |i,o,e,t|
+        i.puts File.read(source.path)
+        i.puts File.read("#{Rails.root}/db/lab1/run.R")
+        i.close
+        o.read
+      end
+    end
+    output = output.scan(/=begin\n(.*?)=end/m).join
+    self.result = StringIO.new(output)
     save!
   end
   handle_asynchronously :generate_result_with_delay
