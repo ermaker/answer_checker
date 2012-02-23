@@ -14,7 +14,7 @@
     <% @diffs.each do |diff| %>
       <tr>
         <td><%= link_to File.basename(diff[:target].result.url), diff[:target].result.url %></td>
-        <td><%= diff[:result] %></td>
+        <td><%= diff[:result] ? '일치' : '불일치' %></td>
         <td><%= diff[:target].comment %></td>
         <td>
           <% if diff[:target].result.file? %>
