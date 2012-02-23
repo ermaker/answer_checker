@@ -22,7 +22,7 @@ answer_checker_run = function(num_of_attr,num_of_domain,num_of_case)
 end
 
 def functions
-  Dir['data/train*_*_*'].map do |fn|
+  Dir['data/train*_*_*'].sample(400).map do |fn|
     if m = fn.match(%r{\Adata/train(\d+)_(\d+)_(\d+)\z})
       [m[1].to_i, m[2].to_i, m[3].to_i]
     end
