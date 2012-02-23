@@ -1,4 +1,6 @@
 AnswerChecker::Application.routes.draw do
+  root :to => 'pages#index'
+
   resources :problems do
     resources :pieces do
       get :diff
