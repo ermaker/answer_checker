@@ -9,7 +9,6 @@
     <th>비교 결과</th>
     <th>다운로드</th>
     <th>남기는 말</th>
-    <th></th>
     <th>실행 소요 시간</th>
   </tr>
 
@@ -26,7 +25,6 @@
       <% end %>
       </td>
     <td><%= piece.comment %></td>
-    <td><%= link_to '삭제', [@problem, piece], confirm: '정말 삭제 하시겠습니까?', method: :delete %></td>
     <td>
       <% if piece.result.file? %>
         <%= distance_of_time_in_words(piece.source.updated_at, piece.result.updated_at, true) %>
